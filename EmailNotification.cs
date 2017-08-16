@@ -15,7 +15,15 @@ namespace Inheritance
         }
 
         public override void Transport(){
-            Console.WriteLine($"Subject:{Subject},Body:{Body},Recipient{Recipient},SMTP Provider:{SmtpProvider}");
+            try
+            {
+            Console.WriteLine($"Subject:{Subject},Body:{Body},Recipient{Recipient},SMTP Provider:{SmtpProvider}");  
+            }
+            catch (NoTransportException)
+            {
+                
+                throw;
+            }
 
         }
         

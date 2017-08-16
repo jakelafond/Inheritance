@@ -6,7 +6,7 @@ namespace Inheritance
         public string Recipient { get; set; }
         public string SmsProvider { get; set; }
 
-        public TextNotification(string subject, string body, string recipient, string smsProvider):base(subject,body)
+        public TextNotification(string subject, string body, string recipient, string smsProvider) : base(subject, body)
         {
             Subject = subject;
             Body = body;
@@ -14,11 +14,20 @@ namespace Inheritance
             SmsProvider = smsProvider;
         }
 
-        public override void Transport(){
-            Console.WriteLine($"Subject:{Subject},Body:{Body},Recipient{Recipient},SMTP Provider:{SmsProvider}");
+        public override void Transport()
+        {
+            try
+            {
+                Console.WriteLine($"Subject:{Subject},Body:{Body},Recipient{Recipient},SMTP Provider:{SmsProvider}");
+            }
+            catch (NoTransportException)
+            {
+
+                throw;
+            }
 
         }
-        
+
     }
-    
+
 }
